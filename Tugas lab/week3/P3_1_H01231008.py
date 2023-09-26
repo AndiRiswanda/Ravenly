@@ -1,5 +1,6 @@
 nomor = int(input("masukan nomor carian anda : "))
-a,b = [0]*2
+a = 0
+b = 0
 
 while nomor > 0:
     c = a + b
