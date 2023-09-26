@@ -1,15 +1,11 @@
-harga = 100000#int(input("Harga barang : "))
-tunai = 122000049824#int(input("Uang pembeli: "))
-if tunai < harga:
-        print("Uang Tunai pembeli kurang!")
-        exit()
+harga = int(input("Harga barang : "))
+tunai = int(input("Uang pembeli: "))
 
 baki = tunai - harga
 p = [100000,50000,20000,10000,5000,2000,1000]
 o = [0]*7
 
 print ("baki tunai adalah")
-
 for i in range (len(p)):
     while baki - p[i] >= 0:
         o[i] += 1

@@ -7,7 +7,6 @@ def conversijam(derajatD):
     derajatD = int(derajatD % 3600 % 60)
     return  (f"{jam:02}:{menit:02}:{derajatD:02}")
 
-while True:
     try:
         derajat = float(input("Masukan Posisi Matahari (Derajat) : "))
     except ValueError:
