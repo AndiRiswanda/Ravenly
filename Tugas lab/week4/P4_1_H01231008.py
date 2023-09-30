@@ -1,12 +1,23 @@
-"""
-BELUM SEMPURNA
+def space(a):
+    print('\n' * a)
+def permutasikata(kata):
+    panjang = len(kata)
+    hasil = []
+    for i in range (panjang):
+        kataterpotong = kata[i:] + kata[:i]
+        hasil.append(kataterpotong)
 
-"""
-kata = "ayam"
-kata = list(kata)
+    hasil = " | ".join(list(reversed(hasil)))
+    
+    return (f"{hasil}\n")
 
-for i in range (1,len(list(kata))):
-    potongan = kata[i:len(list(kata))]
 
-    kataTerpotong = "".join(kata).strip("".join(potongan))
-    print (potongan,kataTerpotong, sep = "")
+space(40)
+
+print(permutasikata("Ayam"))
+print(permutasikata("Rumah"))
+print(permutasikata("Makan"))
+print(permutasikata("Nasi"))
+print(permutasikata("Sedap"))
+
+space(20)
