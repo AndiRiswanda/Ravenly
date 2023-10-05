@@ -1,15 +1,7 @@
-def palindorme(string):
-    '''
-    fungsi yang akan menerima input string
-    akan mereverse string tersebut dan 
-    melakukan pengecekan sama atau tidaknya
-    reverse string dan string asli
-    
-    '''
-    biasa = ("".join(map(str,[huruf for huruf in string if huruf.isalnum])))
-    reverse = biasa[::-1]
+def palindorme(string: str) -> str:
+    kataAwal = ("".join(map(str,[huruf for huruf in string if huruf.isalnum()])))
 
-    if reverse.lower() == biasa.lower():
+    if kataAwal.lower() == (kataAwal[::-1]).lower():
         print ("PALINDROME\n")
     else:
         print ("bukan PALINDROME\n")
@@ -20,3 +12,4 @@ palindorme("Radar")
 palindorme("akuSukaCilok")
 palindorme("A man, a plan, a canal, Panama!")
 palindorme("12321")
+palindorme(input())

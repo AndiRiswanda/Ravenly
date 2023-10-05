@@ -28,6 +28,7 @@ def catAndmouse2(cata,catb,ratc):
     elif cat1 == cat2:
         print("rat wins")
     else: print("cat A wins")
+
 clearscree()
 print("mengunakan if-else (long):")
 start_time = time.perf_counter()

@@ -40,7 +40,7 @@
 <h2 align="center">📞 Get in Touch</h2>
 
 <p align="center">
-  Feel free to reach out to me if you have any questions, want to collaborate, or just want to chat about coding. You can find me on [LinkedIn]() or [Twitter]().
+  Feel free to reach out to me if you have any questions, want to collaborate, or just want to chat about coding. You can find me on Instagram.
 </p>
 
 <h2 align="center">🚀 Future Plans</h2>
