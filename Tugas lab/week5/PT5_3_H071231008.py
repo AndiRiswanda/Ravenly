@@ -15,7 +15,7 @@ def Anagram(kata1,kata2):
                 return False
             
     except TypeError: return "Input Tidak Valid"
-        
+
 
 """
 testcase

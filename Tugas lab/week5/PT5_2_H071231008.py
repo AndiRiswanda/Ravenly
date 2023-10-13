@@ -3,7 +3,12 @@ def kataSingkat(kata):
         panjang = len(kata)
 
         depan = kata[0]
-        tengah = (kata[panjang//2]) 
+
+        if panjang%2 == 0:
+            tengah = (kata[(panjang//2)-1])+ (kata[panjang//2])
+        else:
+            tengah = (kata[panjang//2]) 
+
         belakang = kata[panjang-1]
 
         return (f"{depan}{tengah}{belakang}")
@@ -22,6 +27,6 @@ print(kataSingkat("James"))
 
 print(kataSingkat("Bakso"))
 
-print(kataSingkat("Presidens"))
+print(kataSingkat("Presiden"))
 
 
