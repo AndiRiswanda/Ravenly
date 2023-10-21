@@ -2,6 +2,8 @@ import random
 
 listAngka = [random.randint(1, 100) for x in range (10)]
 
+print (listAngka)
+
 genap = [x for x in listAngka if x%2 == 0]
 ganjil = [x for x in listAngka if x%2 != 0]
 habis5 = [x for x in listAngka if x%5 == 0]

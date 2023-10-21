@@ -25,7 +25,7 @@ Alamat  : {data['Alamat']}
         """)
         case "2": data_input("Nama");print(f"\nUNama baru anda adalah : {data['Nama']}")
         case "3": data_input("Umur"); print(f"\nUmur baru anda adalah : {data['Umur']}")
-        case "4": data_input("Alamat"); print(f"\nUNama baru anda adalah : {data['Alamat']}")
+        case "4": data_input("Alamat"); print(f"\nNama baru anda adalah : {data['Alamat']}")
         case "5": return False
         case _ : return print ("Opsi Tidak Valid")
 
