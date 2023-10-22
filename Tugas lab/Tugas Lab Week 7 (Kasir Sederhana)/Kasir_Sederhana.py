@@ -4,6 +4,7 @@ os.system("cls")
 os.chdir("C:/Users/ASUS/OneDrive/Documents/RavenlyRepo/Tugas lab")
 pathkerja = os.path.join("Tugas Lab Week 7 (Kasir Sederhana)","KasirFiles")
 pathInvoice = "C:/Users/ASUS/OneDrive/Documents/RavenlyRepo/Tugas lab/Tugas Lab Week 7 (Kasir Sederhana)/KasirFiles/Invoice"
+
 """
 Costum Funtion
 
@@ -48,19 +49,20 @@ def kataSingkat(kata):
 
 
 def generatedkodenamafiles(NamaKasir):
-    NamaFormated = kataSingkat(NamaKasir)
+    NamaFormated = (kataSingkat(NamaKasir)).upper()
 
     HasilTerminalEchoDate = os.popen('echo %date%').read()
     HasilTerminalEchotime = os.popen('echo %time%').read()
 
-    waktu = HasilTerminalEchotime[0:2] + HasilTerminalEchotime[3:5]
-
+    waktu = HasilTerminalEchotime.split(":")
+    waktujam = f"{int(waktu[0]):02}"
+    waktumenit = f"{waktu[1]:02}"
     bulan, tanggal, tahun = HasilTerminalEchoDate.split("/")
     bulan = bulan.split()
 
-    generatednum = f"{random.randint(1,100):02}"
+    generatednum = f"{random.randint(1,100):03}"
 
-    NamaFileFormated = "".join((NamaFormated, tahun[2:4], bulan[1], tanggal, waktu ,generatednum,".txt"))
+    NamaFileFormated = "".join((NamaFormated, tahun[2:4], bulan[1], tanggal, waktujam ,waktumenit,generatednum,".txt"))
 
     return NamaFileFormated
 
@@ -99,7 +101,7 @@ def TabelTransaksiBarang(databarang,kode,metode):
         extensiTable += "================================================================================\n"
 
     total = ("================================================================================\n").rjust(89)
-    total += (f"| {'total'.center(46)} | {'Rp'+str(totalharga).center(27)} |\n").rjust(89)
+    total += (f"| {'total'.center(44)} | {'Rp'+str(totalharga).center(27)} |\n").rjust(89)
     total += ("================================================================================\n").rjust(89)
     lines = extensiTable.split("\n")
 
@@ -133,17 +135,18 @@ Kode Transaksi      : {(kode).replace(".txt", "")}
     
     elif metode == "riwayat" or metode == "r" :
         extensiriwayat  = "\n"
-        extensiriwayat += (f"|{Waktu_Transaksi.center(43)}|{Kode_Transaksi.center(43)}|{str(totalharga).center(20)}|\n").rjust(118)
-        extensiriwayat += ("===============================================================================================================").rjust(118)
+        extensiriwayat += (f"|{Waktu_Transaksi.center(43)}|{Kode_Transaksi.center(43)}|{str(totalharga).center(20)}|\n").rjust(119)
+        extensiriwayat += ("===============================================================================================================").rjust(119)
         
+        riwayat = f"       ===============================================================================================================\n"
 
-        riwayat = "RIWAYAT TRANSAKSI".center(106)
+        riwayat += ("|" + "RIWAYAT TRANSAKSI".center(108) + "|").rjust(118) + "\n"
 
-        riwayat += f"==============================================================================================================\n".rjust(118)
+        riwayat += f"       ===============================================================================================================\n"
 
-        riwayat += (f'|{"Waktu".center(43)}|{"Kode Transaksi".center(43)}|{"Nominal Transaksi".center(20)}|\n').rjust(118)
+        riwayat += (f'|{"Waktu".center(43)}|{"Kode Transaksi".center(43)}|{"Nominal Transaksi".center(20)}|').rjust(118)+"\n"
 
-        riwayat += f"==============================================================================================================\n".rjust(118)
+        riwayat += f"=============================================================================================================\n".rjust(118)
 
         riwayat += (f" {extensiriwayat[2:]}")
 
@@ -239,6 +242,7 @@ def MAINopsiprosesor(opsi):
             pencarianInvoice(kodebarangtujuan)
         case 3:
             try:
+                os.chdir("C:/Users/ASUS/OneDrive/Documents/RavenlyRepo/Tugas lab/Tugas Lab Week 7 (Kasir Sederhana)/KasirFiles")
                 print("Tentu Boleh !, Ini Riwayat Transaksi anda.....")
                 with open("trx_History.txt", "r") as file1:
                     print(file1.read())
@@ -273,8 +277,11 @@ while True:
     if counter < 1:
         
         headline("SELAMAT DATANG",lebar= 1,panjang = 50)
-
         dataKasir["nama"] = input(f"Masukan Nama Kasir?{' '*10} :  ")
+        while dataKasir["nama"].isnumeric():
+            print ("nama tidak valid")
+            dataKasir["nama"] = input(f"Masukan Nama Kasir?{' '*10} :  ")
+
 
         clearscreen()
 
@@ -295,3 +302,35 @@ while True:
         clearscreen()
         print("\nTerimakasih, Selama Tinggal....\n")
         exit()
+
+
+    """
+    PERSONAL PREFRENCE hehe
+    
+    """
+    try:
+        import pyautogui
+        import pygetwindow as gw
+
+        target_window_title = "KasirFiles"
+        target_window_title2 = "trx_History.txt"
+
+        window = gw.getWindowsWithTitle(target_window_title)
+        window2 = gw.getWindowsWithTitle(target_window_title2)
+        if window:
+            window[0].activate()
+            pyautogui.press('f5')
+        if window2:
+            window[0].activate()
+            pyautogui.press('f5')
+        else:
+            pass
+    except:
+        pass
+
+
+
+
+
+
+
