@@ -21,7 +21,7 @@ def longsub(word):
                 else:
                     hasil.append(letter)
                     print (second)
-                    break
+                    break``
         except IndexError:
             pass
 

@@ -9,15 +9,10 @@ import random
 Konfirmasi Path Kerja
 
 """
-if os.getcwd() != "c:/Users/ASUS/OneDrive/Documents/RavenlyRepo":
-    os.chdir("c:/Users/ASUS/OneDrive/Documents/RavenlyRepo")
-
-
-pathUtama = (os.path.join("Tugas lab","Tugas Lab Week 7 (Kasir Sederhana)","KasirFiles"))
-pathInvoice = (os.path.join(pathUtama,"Invoice"))
-
-
-
+os.system("cls")
+os.chdir("C:/Users/ASUS/OneDrive/Documents/RavenlyRepo/Tugas lab")
+pathkerja = os.path.join("Tugas Lab Week 7 (Kasir Sederhana)","KasirFiles")
+pathInvoice = "C:/Users/ASUS/OneDrive/Documents/RavenlyRepo/Tugas lab/Tugas Lab Week 7 (Kasir Sederhana)/KasirFiles/Invoice"
 
 """
 Costum Funtion
@@ -84,8 +79,6 @@ def generatedkodenamafiles(NamaKasir):
 
 
 def pencarianInvoice(namaInvoice):
-    if os.getcwd() != "c:/Users/ASUS/OneDrive/Documents/RavenlyRepo":
-        os.chdir("c:/Users/ASUS/OneDrive/Documents/RavenlyRepo")
     os.chdir(pathInvoice)
     try :
         with open((namaInvoice+".txt"), "r") as FileYangDitemukan:
@@ -133,7 +126,7 @@ def TabelTransaksiBarang(databarang,kode,metode):
         counter += 1
         nama = databarang[key][0].center(16)
         if len(databarang[key][0]) > 15:
-            nama = nama[0:13] + "..."
+            nama = nama[0:13] + "..'"
         harga = str(databarang[key][1]).ljust(25)
         jumlah = str(databarang[key][2]).center(10)
         total = str(databarang[key][3]).rjust(12)
@@ -195,7 +188,7 @@ Kode Transaksi      : {(kode).replace(".txt", "")}
         riwayat += (f"{extensiriwayat[1:]}")
 
         try:
-            os.chdir("..")
+            os.chdir("C:/Users/ASUS/OneDrive/Documents/RavenlyRepo/Tugas lab/Tugas Lab Week 7 (Kasir Sederhana)/KasirFiles")
             if not os.path.exists("trx_history.txt"):
                 with open("trx_History.txt", "w") as fileriwayat:
                     fileriwayat.write(riwayat)
@@ -203,7 +196,7 @@ Kode Transaksi      : {(kode).replace(".txt", "")}
                 with open("trx_History.txt", "a") as fileriwayat2:
                     fileriwayat2.write(extensiriwayat)
         except IOError as er:
-            print(f"error : {er}")
+            print("error")
 
 
 def MAINopsiprosesor(opsi):
@@ -252,28 +245,26 @@ def MAINopsiprosesor(opsi):
                     
             #Directories Invoice Dan Pengaksesan
             try:
-                os.chdir(pathUtama)
+                if os.getcwd() != ("C:/Users/ASUS/OneDrive/Documents/RavenlyRepo/Tugas lab/Tugas Lab Week 7 (Kasir Sederhana)/KasirFiles"):
+                    os.chdir("C:/Users/ASUS/OneDrive/Documents/RavenlyRepo/Tugas lab/Tugas Lab Week 7 (Kasir Sederhana)/KasirFiles")
+                    
                 kodenama = generatedkodenamafiles(dataKasir["nama"])
-
-                if os.path.exists("Invoice") == False:
+                if os.path.exists("invoice") == False:
                     
                     os.mkdir("Invoice")
-                    os.chdir("Invoice")
+                    os.chdir("invoice")
                     
                     with open(kodenama, "w" ) as FileInvoice:
                         FileInvoice.write(TabelTransaksiBarang(dataproduk,kodenama,"t"))
                     TabelTransaksiBarang(dataproduk,kodenama,"riwayat")
-                else:
-                    
-                    os.chdir("Invoice")
-
+                else:      
+                    os.chdir("invoice")
                     with open(kodenama, "w" ) as FileInvoice:
                         FileInvoice.write(TabelTransaksiBarang(dataproduk,kodenama,"t"))
                     TabelTransaksiBarang(dataproduk,kodenama,"riwayat")
                     print(f"\nNOTIFIKASI : Transaksi Berhasi! Dengan Kode Special : {kodenama[0:-4]}\n")
 
             except IOError as er:
-                
                 print (f"\n NOTIFIKASI : Gagal Membuat Transaksi : {er}\n")
 
         case 2:
@@ -324,7 +315,7 @@ while True:
     # VariablePenting
     dataproduk = {}
     if counter < 1:
-        clearscreen()
+        
         headline("SELAMAT DATANG",lebar= 1,panjang = 50)
         dataKasir["nama"] = input(f"Masukan Nama Kasir?{' '*10} :  ")
         while dataKasir["nama"].isnumeric():

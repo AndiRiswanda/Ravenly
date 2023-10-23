@@ -1,0 +1,106 @@
+Certainly! Here are some additional ANSI escape sequences for text formatting in Python:
+
+To change text color, you can use the following ANSI escape sequences:
+
+For foreground (text) color:
+Black: \x1B[30m
+Red: \x1B[31m
+Green: \x1B[32m
+Yellow: \x1B[33m
+Blue: \x1B[34m
+Magenta: \x1B[35m
+Cyan: \x1B[36m
+White: \x1B[37m
+
+For background color:
+Black: \x1B[40m
+Red: \x1B[41m
+Green: \x1B[42m
+Yellow: \x1B[43m
+Blue: \x1B[44m
+Magenta: \x1B[45m
+Cyan: \x1B[46m
+White: \x1B[47m
+
+To reset text formatting (remove any previous formatting), you can use the following escape sequence:
+
+Reset all attributes: \x1B[0m
+
+To make text blink:
+
+\x1B[5m
+
+To hide (conceal) text:
+
+\x1B[8m
+
+To invert the text (swap foreground and background colors):
+
+\x1B[7m
+
+To change the text style (e.g., italics):
+
+\x1B[3m
+
+To print underlined text in Python, you can use the following ANSI escape sequence:
+
+\x1B[4m
+To print bold text, you can use the following ANSI escape sequence:
+
+\x1B[1m
+To print both underlined and bold text, you can use the following ANSI escape sequence:
+
+\x1B[1;4m
+
+To strike through text:
+
+\x1B[9m
+
+Sure, here are some additional ANSI escape sequences for text formatting in Python:
+
+To change the font type (if supported by the terminal):
+
+Default font: \x1B[10m
+Alternative font 1: \x1B[11m
+Alternative font 2: \x1B[12m
+Alternative font 3: \x1B[13m
+Alternative font 4: \x1B[14m
+Alternative font 5: \x1B[15m
+
+To change the text size:
+
+Set text size to 2x (double size): \x1B[20m
+Set text size to 3x (triple size): \x1B[21m
+
+To underline text with a thicker line:
+
+\x1B[21m
+
+To make text faint (less intense):
+
+\x1B[2m
+
+To change the background color while maintaining the current text color:
+
+Set background color to RGB (e.g., bright yellow): \x1B[48;2;255;255;0m
+
+To change the text color while maintaining the current background color:
+
+Set text color to RGB (e.g., bright red): \x1B[38;2;255;0;0m
+
+To hide the cursor:
+
+\x1B[?25l
+
+To show the cursor (if it was hidden):
+
+\x1B[?25h
+
+To move the cursor to a specific position (row, column):
+
+\x1B[<row>;<column>H (Replace <row> and <column> with the desired position)
+
+To clear the screen:
+
+\x1B[2J
+
