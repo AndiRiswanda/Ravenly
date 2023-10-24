@@ -132,20 +132,15 @@ def TabelTransaksiBarang(databarang,kode,metode):
         total = str(databarang[key][3]).rjust(12)
 
         totalharga += databarang[key][3]
-        extensiTable += f"| {nama} | {f'Rp{harga}'} | {jumlah} | {f'Rp{total}'} |\n"
+        extensiTable += f"\t| {nama} | {f'Rp{harga}'} | {jumlah} | {f'Rp{total}'} |\n"
         if counter != len(databarang):
-            extensiTable += "================================================================================\n"
+            extensiTable += "\t================================================================================\n"
         else:
-            extensiTable += "================================================================================"
+            extensiTable += "\t================================================================================"
 
-    total = (f"|   {'total'.center(44)} |{('Rp '+str(totalharga)).center(29)}|\n").rjust(89)
-    total += ("================================================================================\n").rjust(89)
-    lines = extensiTable.split("\n")
+    total = (f"\t|{'total'.center(44)} |{('Rp '+str(totalharga)).center(29)}|\n")
+    total += ("\t================================================================================\n")
 
-    formatted_lines = [line.rjust(88) for line in lines]
-    
-    extensiTable = "\n".join(formatted_lines)
-    
     
     if metode == "transaksi" or metode == "t":
         return f"""

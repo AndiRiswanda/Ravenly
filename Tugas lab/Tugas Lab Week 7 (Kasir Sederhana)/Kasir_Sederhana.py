@@ -17,8 +17,6 @@ pathUtama = (os.path.join("Tugas lab","Tugas Lab Week 7 (Kasir Sederhana)","Kasi
 pathInvoice = (os.path.join(pathUtama,"Invoice"))
 
 
-
-
 """
 Costum Funtion
 
@@ -112,6 +110,7 @@ def pencarianInvoice(namaInvoice):
                ██║   ██║  ██║██║  ██╗    ╚█████╔╝╚██████╔╝██║ ╚═╝ ██║██║     ██║  ██║    ╚═╝╚██╗
                ╚═╝   ╚═╝  ╚═╝╚═╝  ╚═╝     ╚════╝  ╚═════╝ ╚═╝     ╚═╝╚═╝     ╚═╝  ╚═╝        ╚═╝""")
             print("\n\n\x1B[1mEnter\x1B[0m" + " untuk lanjut")
+
             if type(input("...")) == str:
                         clearscreen()
                         break
@@ -120,6 +119,20 @@ def pencarianInvoice(namaInvoice):
         
 
 def TabelTransaksiBarang(databarang,kode,metode):
+    """
+    
+    Fungsi ini mainly akan berguna sebagai formater table
+    format yang di return tergantung metode
+    
+    Metode "T" (Transaksi)
+    metode ini return sebuah table yang berformat yang risit atau data transaksi
+    
+    Metode "R" (Riwayat)
+    metode ini return sebuah table yang berformat sejarah transaksi atau riwayat transaksi
+    
+    """
+
+    #memproses data untuk nanti dimasukan di format table
     extensiTable = ""
     totalharga = 0
 
@@ -127,9 +140,9 @@ def TabelTransaksiBarang(databarang,kode,metode):
     Tanggal_Transaksi   = (os.popen('echo %date%').read())[0:-1]
     Kode_Transaksi      = (kode).replace(".txt", "")
     
+    #extensi table
     counter = 0
-    for key, values in databarang.items():
-        
+    for key in databarang.keys():
         counter += 1
         nama = databarang[key][0].center(16)
         if len(databarang[key][0]) > 15:
@@ -139,22 +152,23 @@ def TabelTransaksiBarang(databarang,kode,metode):
         total = str(databarang[key][3]).rjust(12)
 
         totalharga += databarang[key][3]
-        extensiTable += f"| {nama} | {f'Rp{harga}'} | {jumlah} | {f'Rp{total}'} |\n"
+
+        extensiTable += f"| {nama} | {f'Rp{harga}'} | {jumlah} | {f'Rp{total}'} |\n".rjust(89)
         if counter != len(databarang):
-            extensiTable += "================================================================================\n"
+            extensiTable += "================================================================================\n".rjust(89)
         else:
-            extensiTable += "================================================================================"
+            extensiTable += "================================================================================".rjust(88)
 
-    total = (f"|   {'total'.center(44)} |{('Rp '+str(totalharga)).center(29)}|\n").rjust(89)
-    total += ("================================================================================\n").rjust(89)
-    lines = extensiTable.split("\n")
+    #extensi total table
+    total = (f"|{'total'.center(48)}|{('Rp '+str(totalharga)).center(29)}|\n").rjust(89)
+    total += f"{'='*80}".rjust(88)
 
-    formatted_lines = [line.rjust(88) for line in lines]
-    
-    extensiTable = "\n".join(formatted_lines)
-    
-    
+
+    """
+    METODE TRANSAKSI (T)
+    """
     if metode == "transaksi" or metode == "t":
+        #Table utama
         return f"""
 ==================================================================================================   
                                         Toko {dataKasir["nama"]}
@@ -177,20 +191,20 @@ Kode Transaksi      : {(kode).replace(".txt", "")}
 ================================================================================================== 
 """
     
+
+    #METODE RIWAYAT
+
     elif metode == "riwayat" or metode == "r" :
-        extensiriwayat  = "\n"
-        extensiriwayat += (f"|{Waktu_Transaksi.center(43)}|{Kode_Transaksi.center(43)}|{str(totalharga).center(20)}|\n").rjust(119)
-        extensiriwayat += ("==============================================================================================================").rjust(118)
+
+        extensiriwayat = f"\n\t\t|{Waktu_Transaksi.center(43)}|{Kode_Transaksi.center(43)}|{str(totalharga).center(20)}|\n"
+        extensiriwayat += f"\t\t{'='*110}"
         
-        riwayat = f"        ==============================================================================================================\n"
-
-        riwayat += ("|" + "RIWAYAT TRANSAKSI".center(108) + "|").rjust(118) + "\n"
-
-        riwayat += f"        ==============================================================================================================\n"
-
-        riwayat += (f'|{"Waktu".center(43)}|{"Kode Transaksi".center(43)}|{"Nominal Transaksi".center(20)}|').rjust(118)+"\n"
-
-        riwayat += f"       ==============================================================================================================\n".rjust(119)
+        riwayat = f"""
+        {'='*110}
+        |{'RIWAYAT TRANSAKSI'.center(108)}|
+        {'='*110}
+        |{"Waktu".center(43)}|{"Kode Transaksi".center(43)}|{"Nominal Transaksi".center(20)}|
+        {'='*110}\n"""
 
         riwayat += (f"{extensiriwayat[1:]}")
 
@@ -252,29 +266,36 @@ def MAINopsiprosesor(opsi):
                     
             #Directories Invoice Dan Pengaksesan
             try:
-                os.chdir(pathUtama)
+                if os.path.basename(os.getcwd()) != os.path.basename(pathUtama):
+                    os.chdir(pathUtama)
                 kodenama = generatedkodenamafiles(dataKasir["nama"])
+
 
                 if os.path.exists("Invoice") == False:
                     
                     os.mkdir("Invoice")
                     os.chdir("Invoice")
-                    
-                    with open(kodenama, "w" ) as FileInvoice:
-                        FileInvoice.write(TabelTransaksiBarang(dataproduk,kodenama,"t"))
-                    TabelTransaksiBarang(dataproduk,kodenama,"riwayat")
-                else:
-                    
-                    os.chdir("Invoice")
-
+    
                     with open(kodenama, "w" ) as FileInvoice:
                         FileInvoice.write(TabelTransaksiBarang(dataproduk,kodenama,"t"))
                     TabelTransaksiBarang(dataproduk,kodenama,"riwayat")
                     print(f"\nNOTIFIKASI : Transaksi Berhasi! Dengan Kode Special : {kodenama[0:-4]}\n")
 
+                else:
+                    
+                    os.chdir("Invoice")
+                    with open(kodenama, "w" ) as FileInvoice:
+                        FileInvoice.write(TabelTransaksiBarang(dataproduk,kodenama,"t"))
+                    TabelTransaksiBarang(dataproduk,kodenama,"riwayat")
+                    print(f"\nNOTIFIKASI : Transaksi Berhasi! Dengan Kode Special : {kodenama[0:-4]}\n")
+
+                    while os.path.basename(os.getcwd()) != os.path.basename(pathUtama):
+                        os.chdir("..")
             except IOError as er:
-                
-                print (f"\n NOTIFIKASI : Gagal Membuat Transaksi : {er}\n")
+                print(f"NOTIFIKASI : Gagal Membuat Files : {er}")
+        
+
+
 
         case 2:
             clearscreen()
@@ -323,6 +344,7 @@ counter = 0
 while True:
     # VariablePenting
     dataproduk = {}
+
     if counter < 1:
         clearscreen()
         headline("SELAMAT DATANG",lebar= 1,panjang = 50)
@@ -350,7 +372,13 @@ while True:
     garis(50)
     if MAINopsiprosesor(int(input("Pilih Opsi Diatas : "))) == False:
         clearscreen()
-        print("\nTerimakasih, Selama Tinggal....\n")
+        print(f"\nTerimakasih, Selama Tinggal {dataKasir['nama']} :> ....\n")
+        print(""" 
+              |\__/,|   (`
+              |_ _  |.--.) )
+              ( T   )     /
+             ((^_(((/(((_/
+              """)
         exit()
 
 
@@ -361,28 +389,12 @@ while True:
     try:
         import pyautogui
         import pygetwindow as gw
-
         target_window_title = "Invoice"
-        target_window_title2 = "trx_History.txt"
-
         window = gw.getWindowsWithTitle(target_window_title)
-        window1 = gw.getWindowsWithTitle(target_window_title2)
-
         if window:
-            window[0].activate()
-            pyautogui.press('f5')
-        if window1:
             window[0].activate()
             pyautogui.press('f5')
         else:
             pass
-        
     except:
         pass
-
-
-
-
-
-
-
