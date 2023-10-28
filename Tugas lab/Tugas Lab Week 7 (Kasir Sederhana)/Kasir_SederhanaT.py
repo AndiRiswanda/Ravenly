@@ -340,35 +340,5 @@ while True:
         exit()
 
 
-    """
-    PERSONAL PREFRENCE hehe
-    
-    """
-    try:
-        import pyautogui
-        import pygetwindow as gw
-
-        target_window_title = "Invoice"
-        target_window_title2 = "trx_History.txt"
-
-        window = gw.getWindowsWithTitle(target_window_title)
-        window1 = gw.getWindowsWithTitle(target_window_title2)
-
-        if window:
-            window[0].activate()
-            pyautogui.press('f5')
-        if window1:
-            window[0].activate()
-            pyautogui.press('f5')
-        else:
-            pass
-        
-    except:
-        pass
-
-
-
-
-
 
 

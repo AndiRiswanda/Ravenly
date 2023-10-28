@@ -103,12 +103,8 @@ def pencarianInvoice(namaInvoice):
             clearscreen()
             print("\n NOTIFIKASI : Maaf Kami Tidak Menemkan Invoice Yang Anda Cari :( \n")
             print("""
-            ████████╗ █████╗ ██╗  ██╗         ██╗██╗   ██╗███╗   ███╗██████╗  █████╗         ██╗
-            ╚══██╔══╝██╔══██╗██║ ██╔╝         ██║██║   ██║████╗ ████║██╔══██╗██╔══██╗    ██╗██╔╝
-               ██║   ███████║█████╔╝          ██║██║   ██║██╔████╔██║██████╔╝███████║    ╚═╝██║ 
-               ██║   ██╔══██║██╔═██╗     ██   ██║██║   ██║██║╚██╔╝██║██╔═══╝ ██╔══██║    ██╗██║ 
-               ██║   ██║  ██║██║  ██╗    ╚█████╔╝╚██████╔╝██║ ╚═╝ ██║██║     ██║  ██║    ╚═╝╚██╗
-               ╚═╝   ╚═╝  ╚═╝╚═╝  ╚═╝     ╚════╝  ╚═════╝ ╚═╝     ╚═╝╚═╝     ╚═╝  ╚═╝        ╚═╝""")
+                Maaf tidak ada file yang kami temukan
+                    """)
             print("\n\n\x1B[1mEnter\x1B[0m" + " untuk lanjut")
 
             if type(input("...")) == str:
@@ -161,7 +157,7 @@ def TabelTransaksiBarang(databarang,kode,metode):
 
     #extensi total table
     total = (f"|{'total'.center(48)}|{('Rp '+str(totalharga)).center(29)}|\n").rjust(89)
-    total += f"{'='*80}".rjust(88)
+    total += f"{'='*80}\n".rjust(88)
 
 
     """
@@ -196,15 +192,15 @@ Kode Transaksi      : {(kode).replace(".txt", "")}
 
     elif metode == "riwayat" or metode == "r" :
 
-        extensiriwayat = f"\n\t\t|{Waktu_Transaksi.center(43)}|{Kode_Transaksi.center(43)}|{str(totalharga).center(20)}|\n"
-        extensiriwayat += f"\t\t{'='*110}"
+        extensiriwayat = f"\n|{Waktu_Transaksi.center(43)}|{Kode_Transaksi.center(43)}|{str(totalharga).center(20)}|\n"
+        extensiriwayat += f"{'='*110}"
         
         riwayat = f"""
-        {'='*110}
-        |{'RIWAYAT TRANSAKSI'.center(108)}|
-        {'='*110}
-        |{"Waktu".center(43)}|{"Kode Transaksi".center(43)}|{"Nominal Transaksi".center(20)}|
-        {'='*110}\n"""
+{'='*110}
+|{'RIWAYAT TRANSAKSI'.center(108)}|
+{'='*110}
+|{"Waktu".center(43)}|{"Kode Transaksi".center(43)}|{"Nominal Transaksi".center(20)}|
+{'='*110}\n"""
 
         riwayat += (f"{extensiriwayat[1:]}")
 
@@ -295,14 +291,13 @@ def MAINopsiprosesor(opsi):
                 print(f"NOTIFIKASI : Gagal Membuat Files : {er}")
         
 
-
-
         case 2:
             clearscreen()
             headline(" Pencarian Barang ;) ",panjang=50)
             kodebarangtujuan = input("Ketik Kode Special Invoice Yang : ")
             clearscreen()
             pencarianInvoice(kodebarangtujuan)
+
 
         case 3:
             try:
@@ -373,28 +368,4 @@ while True:
     if MAINopsiprosesor(int(input("Pilih Opsi Diatas : "))) == False:
         clearscreen()
         print(f"\nTerimakasih, Selama Tinggal {dataKasir['nama']} :> ....\n")
-        print(""" 
-              |\__/,|   (`
-              |_ _  |.--.) )
-              ( T   )     /
-             ((^_(((/(((_/
-              """)
         exit()
-
-
-    """
-    PERSONAL PREFRENCE hehe
-    
-    """
-    try:
-        import pyautogui
-        import pygetwindow as gw
-        target_window_title = "Invoice"
-        window = gw.getWindowsWithTitle(target_window_title)
-        if window:
-            window[0].activate()
-            pyautogui.press('f5')
-        else:
-            pass
-    except:
-        pass
