@@ -8,8 +8,9 @@ def IP6(teks):
     else : return False
     
 def IP4(teks):
-    patternIPv4 = r"((1?[0-9]?[0-9]?|2[0-4]?[0-9]?|25[0-5])\.){3}(1?[0-9]?[0-9]?|2[0-4]?[0-9]?|25[0-5])"
+    patternIPv4 = r"((1?[0-9]?[0-9]?|2[0-4]?[0-9]?|25[0-5])\.){3}(0|1[0-9]?[0-9]?|2[0-4]?[0-9]?|25[0-5])"
     hasil = re.search(patternIPv4,teks)
+
     if hasil:
         return True
     else : return False
