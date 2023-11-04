@@ -33,6 +33,7 @@ def IPCheck(teks,n):
 teks1 ="""This line has trailing whitespace
 121.203.197.20
 2001:0db8:0000:0000:0000:ff00:0042:8329"""
+
 teks2="""213.214.111.564
 444.444.444.444 not an ip address
 1050:0:0a:0:5:600:300c:326b"""
