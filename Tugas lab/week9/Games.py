@@ -16,3 +16,7 @@ support.special(warrior)
 # sesudah
 print("Warrior (health)", warrior.get_health())
 print("Support (speed): ",support.get_speed())
+
+
+
+
