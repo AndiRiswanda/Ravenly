@@ -15,7 +15,7 @@ print(prime_valid(5))
 def power(x,y):
     if y == 1:
         return y
-    x * pow(y)
+    x * power(y)
     y - 1
 
-print(pow(2,4))
+print(power(2,4))
