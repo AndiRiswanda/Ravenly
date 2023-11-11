@@ -17,6 +17,7 @@ def prime (x):
     return all(x % i != 0 for i in range(2, int(x*0.5 )+1)) 
 print(prime(3))
 
+<<<<<<< HEAD
 def fpb(x,y):
     terbesar = max(x,y)
     while True:
@@ -31,3 +32,12 @@ def kpk(x, y):
 
 print(fpb(10,5))
 print(kpk(10,5))
+=======
+def power(x,y):
+    if y == 1:
+        return y
+    x * power(y)
+    y - 1
+
+print(power(2,4))
+>>>>>>> 20c638f3aa1040d9766fb3da8d5f7e4e95ac2fb2
