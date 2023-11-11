@@ -9,3 +9,5 @@ for i in range (len(p)):
         o[i] += 1
         tunai -= p[i]
     print (f"{o[i]} uang {p[i]}")
+
+
