@@ -62,9 +62,9 @@ while True:
             print(f"+{('='*48).center(50)}+")
             print(f"|{'MENGEDIT DATA'.center(50)}|")
             print(f"+{('='*48).center(50)}+")
-            nimbaru = input("Masukan Nim Kamu: ")
-            namabaru = input("Masukan Nama Kamu: ")
-
+            nimtujuan = input("Masukan Nim mahasiswa: ")
+            namabaru = input("Masukan Nama baru: ")
+            data1.edit_mahasiswa(nimtujuan,namabaru)
 
         case "3":
             clearscreen()

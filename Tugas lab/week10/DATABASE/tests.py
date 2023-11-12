@@ -64,7 +64,7 @@ while True:
             print(f"+{('='*48).center(50)}+")
             nimbaru = input("Masukan Nim Kamu: ")
             namabaru = input("Masukan Nama Kamu: ")
-            clearscreen()
+
 
         case "3":
             clearscreen()
