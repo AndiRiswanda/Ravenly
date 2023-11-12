@@ -239,4 +239,3 @@ while True:
             print(stringinbox("Sekian Terima Kasih"))
             print(f"{garis().center(50)}")
             exit()
-
