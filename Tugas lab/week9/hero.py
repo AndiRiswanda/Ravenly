@@ -5,7 +5,7 @@ class human:
     #positioning
     def getPosition(self):
         return self.__position
-    def changePosition(self,value):
+    def setposition(self,value):
         self.__position = value
 
     #Tactics
@@ -41,7 +41,7 @@ class Hero(human):
     def __init__ (self,nama,pos_x = 0):
         super().__init__(nama,pos_x = 0)
         self._power = 15
-        self._health = 100
+        self._health = 400
         self._armor = 5
         self._speed = 3
 
@@ -83,6 +83,26 @@ class Support(human):
         self._speed += 2
         target._health -= self._power
         
+
+warrior = Warrior("bambang", pos_x=10)
+assassin = Assassin("joko", pos_x=25)
+support = Support("udin",pos_x=30)
+# sebelum
+print("health (before)", warrior.get_health())
+assassin.attack(warrior)
+# sesudah
+print("health (after)", warrior.get_health())
+print("-"*10)
+# sebelum
+print("Warrior (health)", warrior.get_health())
+print("Support (speed) : ",support.get_speed())
+support.special(warrior)
+# sesudah
+print("Warrior (health)", warrior.get_health())
+print("Support (speed): ",support.get_speed())
+
+
+
 
 
 

@@ -1,7 +1,5 @@
-intel = []
-i = 0
-while i < 100:
-    intel.append(f"H071231{i:03}")
-    i += 1
-intel = tuple(intel)
-print(intel)
+a = ['a','b','c','d','e','f','g','h','i','j','k','l','m','n','o','p','q','r','s','t','u','v','w','x','y','z']
+num = [i for i in range(0,len(a))]
+dicnum =dict(zip(a,num))
+
+print(dicnum)
