@@ -17,3 +17,19 @@ print(jj)
 
 for i in range(1,len(a)):
     print(a[i])
+
+
+
+
+"""ALICELEADERBOARD"""
+def climbingLeaderboard(ranked, player):
+    ranked = sorted(set(ranked), reverse=True)
+    ranks = []
+    l = len(ranked)
+
+    for score in player:
+        while (l > 0) and (score >= ranked[l-1]):
+            l -= 1
+        ranks.append(l+1)
+
+    return ranks

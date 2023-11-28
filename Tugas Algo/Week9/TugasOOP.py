@@ -74,12 +74,13 @@ while True:
             d = input("masukan nim mahasiswa yang ingin dihapus: ")
             clearscreen()
             data1.hapus_mahasiswa(d)
+
         case "4":
             clearscreen()
             print(f"+{('='*48).center(50)}+")
             print(f"|{'DATA MAHASISWA'.center(50)}|")
             print(f"+{('='*48).center(50)}+")
             data1.tampilkan_mahasiswa()
+
         case "5":
             exit()
-    

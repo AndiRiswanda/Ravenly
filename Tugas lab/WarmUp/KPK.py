@@ -1,22 +1,10 @@
-def KPK(x, y):
-
-    greater = max(x,y)
-    while(True):
-        if((greater % x == 0) and (greater % y == 0)):
-            lcm = greater
-            break
-        greater += 1
-    return lcm
-
 def FPB(x,y):
-    greater = max(x,y)
-    while True:
-        if x % greater == 0 and y % greater == 0:
-            break
-        greater -= 1
-    return greater
-    
+    x , y = y , x % y
+    return x
 
+
+def KPK(x, y):
+    return x*y // FPB(x,y)
 
 
 print(FPB(4,6))

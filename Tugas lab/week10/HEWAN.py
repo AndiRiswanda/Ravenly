@@ -16,7 +16,7 @@ class Car(Vehicle):
         self.__carname = carname
 
     def go(self):
-        print("You drive the car")
+        print(f"You drive the {self.__carname}")
 
     def stop(self):
         print("This car is stopped")
@@ -33,7 +33,7 @@ class Motorcycle(Vehicle):
         self.__carname = carname
 
     def go(self):
-        print("You ride the motorcycle")
+        print(f"You drive the {self.__carname}")
 
     def stop(self):
         print("This motorcycle is stopped")
