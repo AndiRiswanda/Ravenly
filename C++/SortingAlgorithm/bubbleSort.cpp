@@ -1,11 +1,11 @@
 #include <iostream>
 
-bool sortedarray(int array[], int length);
+
 
 
 int main(){
 
-    int unsorted[] = {1 , 2  , 3 , 4 , 5 , 7 , 9 , 6 , 8 , 10};
+    int unsorted[] = {3, 4, 7, 8, 5,  6, 1, 2};
     int length = sizeof(unsorted)/sizeof(int);
     for (int i = 0; i < length - 1; i++){
         for (int j = 0; j < length - i - 1 ; j++){
@@ -24,4 +24,3 @@ int main(){
 
     return 0;
 }
-

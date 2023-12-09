@@ -30,7 +30,7 @@ int main(){
     do{
 
         ComputerMove(pMarked,0,posible);
-        std::cout << posible - 2 << " Outcome dicek" << "\n";
+        std::cout << posible << " Outcome dicek" << "\n";
         if (winningcondition(pMarked) != 20){
             printingwinner(winningcondition(pMarked),pMarked);
             break;
@@ -86,7 +86,6 @@ void ComputerMove(char* pmarked, int row,int& posible){
         boardvisual(pmarked);
 
 }
-
 int winningcondition(const char *pMarked){
 
     //horizontal
@@ -145,18 +144,15 @@ void printingwinner(int wincon, const char* pMarked){
             std::cout << "Draw duh";
         }
 }
-
 void copyBoard(const char* source, char* destination) {
     for (int i = 0; i < 9; ++i) {
         destination[i] = source[i];
     }
 }
-
 int minimax(char *pmarked,int depth,bool maximizer, int& posible){
     int wincon = winningcondition(pmarked);
     int count = 0;
     if (wincon != 20){
-        posible ++;
         return winningcondition(pmarked) + depth;
     }
     
@@ -166,8 +162,9 @@ int minimax(char *pmarked,int depth,bool maximizer, int& posible){
         for (int i = 0; i < 9 ; i++){
             if(pmarked[i] == ' '){
                 pmarked[i] = 'O';
-                bestposible = std::max(bestposible,minimax(pmarked,depth + 1, !maximizer,posible));
+                bestposible = std::max(bestposible,minimax(pmarked,depth + 1, false,posible));
                 pmarked[i] = ' ';
+                posible ++;
                 }
             }
         return bestposible;
@@ -178,8 +175,9 @@ int minimax(char *pmarked,int depth,bool maximizer, int& posible){
         for (int i = 0; i < 9 ; i++){
             if(pmarked[i] == ' '){
                 pmarked[i] = 'X';
-                bestposible = std::min(bestposible,minimax(pmarked,depth + 1, maximizer,posible));
+                bestposible = std::min(bestposible,minimax(pmarked,depth + 1, true,posible));
                 pmarked[i] = ' ';
+                posible ++;
                 }
         }
         return bestposible;
